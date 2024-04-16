@@ -65,7 +65,7 @@ export async function createWebSocketClient(options) {
   };
 }
 export async function replicateWithWebsocketServer(options) {
-  var websocketClient = await createWebSocketClient(options);
+  var websocketClient = options.websocketClient ? options.websocketClient : await createWebSocketClient(options);
   var wsClient = websocketClient.socket;
   var messages$ = websocketClient.message$;
   var requestCounter = 0;

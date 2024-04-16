@@ -13,6 +13,7 @@ import type {
     RxReplicationHandler,
     StringKeys
 } from '../../types/index.d.ts';
+import {WebsocketClient} from "./websocket-client.ts";
 
 export type WebsocketServerOptions = {
     database: RxDatabase<any, any, any>;
@@ -25,6 +26,7 @@ export type WebsocketServerState = {
 };
 
 export type WebsocketClientOptions<RxDocType> = {
+    websocketClient: WebsocketClient;
     replicationIdentifier: string;
     collection: RxCollection<RxDocType>;
     url: string;

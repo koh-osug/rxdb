@@ -1,6 +1,7 @@
 import type { Observable } from 'rxjs';
 import type { ServerOptions, ClientOptions, WebSocketServer, WebSocket } from 'ws';
 import type { RxCollection, RxDatabase, RxReplicationHandler, StringKeys } from '../../types/index.d.ts';
+import { WebsocketClient } from "./websocket-client.ts";
 export type WebsocketServerOptions = {
     database: RxDatabase<any, any, any>;
 } & ServerOptions;
@@ -10,6 +11,7 @@ export type WebsocketServerState = {
     onConnection$: Observable<WebSocket>;
 };
 export type WebsocketClientOptions<RxDocType> = {
+    websocketClient: WebsocketClient;
     replicationIdentifier: string;
     collection: RxCollection<RxDocType>;
     url: string;

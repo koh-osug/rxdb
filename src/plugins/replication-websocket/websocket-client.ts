@@ -114,7 +114,7 @@ export async function createWebSocketClient<RxDocType>(options: WebsocketClientO
 export async function replicateWithWebsocketServer<RxDocType, CheckpointType>(
     options: WebsocketClientOptions<RxDocType>
 ): Promise<RxReplicationState<RxDocType, CheckpointType>> {
-    const websocketClient = await createWebSocketClient(options);
+    const websocketClient = options.websocketClient ? options.websocketClient : await createWebSocketClient(options);
     const wsClient = websocketClient.socket;
     const messages$ = websocketClient.message$;
 
